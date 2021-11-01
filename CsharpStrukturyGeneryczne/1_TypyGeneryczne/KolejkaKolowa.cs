@@ -1,42 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _1_TypyGeneryczne
+﻿namespace _1_TypyGeneryczne
 {
     public class KolejkaKolowa
     {
         private double[] bufor;
-        private int poczatekBufora;
+        private int pocztekBufora;
         private int koniecBufora;
 
-        public KolejkaKolowa()
+        public KolejkaKolowa() : this(pojemnosc: 3)
         {
-
         }
 
         public KolejkaKolowa(int pojemnosc)
         {
             bufor = new double[pojemnosc + 1];
+            pocztekBufora = 0;
+            koniecBufora = 0;
         }
 
-        public void Zapisz (double wartosc)
+        public void Zapisz(double wartosc)
         {
             bufor[koniecBufora] = wartosc;
             koniecBufora = (koniecBufora + 1) % bufor.Length;
 
-            if (koniecBufora == poczatekBufora)
-            {
-                poczatekBufora = (poczatekBufora + 1) % bufor.Length;
-            }
+            if (koniecBufora == pocztekBufora)
+                pocztekBufora = (pocztekBufora + 1) % bufor.Length;
         }
 
         public double Czytaj()
         {
-            var wynik = bufor[poczatekBufora];
-            poczatekBufora = (poczatekBufora + 1) % bufor.Length;
+            var wynik = bufor[pocztekBufora];
+            pocztekBufora = (pocztekBufora + 1) % bufor.Length;
             return wynik;
         }
 
@@ -52,7 +45,7 @@ namespace _1_TypyGeneryczne
         {
             get
             {
-                return koniecBufora == poczatekBufora;
+                return koniecBufora == pocztekBufora;
             }
         }
 
@@ -60,10 +53,8 @@ namespace _1_TypyGeneryczne
         {
             get
             {
-                return (koniecBufora + 1) % bufor.Length == poczatekBufora;
+                return (koniecBufora + 1) % bufor.Length == pocztekBufora;
             }
         }
-
-
     }
 }
