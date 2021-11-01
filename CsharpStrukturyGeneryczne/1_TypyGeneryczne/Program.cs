@@ -27,8 +27,6 @@ namespace _1_TypyGeneryczne
             {
                 Console.WriteLine("\t\t" + kolejka.Czytaj());
             }
-
-            Console.ReadKey();
         }
     }
 }
